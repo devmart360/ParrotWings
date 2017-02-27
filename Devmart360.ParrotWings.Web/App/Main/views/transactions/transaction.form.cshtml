@@ -1,0 +1,35 @@
+﻿<div ng-controller="app.views.transaction.form as vm">
+
+    <h3>Новая транзакция</h3>
+
+    <md-input-container>
+        <label>Получатель</label>
+        <md-autocomplete md-selected-item="vm.selectedItem"
+                         md-search-text-change="vm.searchTextChange(vm.searchText)"
+                         md-search-text="vm.searchText"
+                         md-selected-item-change="vm.selectedItemChange(item)"
+                         md-items="item in vm.users"
+                         md-item-text="item.name"
+                         md-min-length="0"
+                         placeholder="Выберите пользователя"
+                         required>
+            <md-item-template>
+                <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.name}}</span>
+            </md-item-template>
+            <md-not-found>
+                Пользователь "{{vm.searchText}}" не найден
+            </md-not-found>
+        </md-autocomplete>
+    </md-input-container>
+    <br />
+    <md-input-container>
+        <label>Сумма</label>
+        <input ng-model="vm.trans.amount" required type="text" placeholder="Введите сумму">
+    </md-input-container>
+
+    <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-warning" ng-click="vm.cancel()">Отмена</button>
+        <button class="btn btn-primary" ng-click="vm.send()">Отправить</button>
+    </div>
+
+</div>

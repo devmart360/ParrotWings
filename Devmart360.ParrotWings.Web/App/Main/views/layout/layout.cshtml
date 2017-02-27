@@ -20,6 +20,7 @@
 
     @Styles.Render("~/Bundles/App/vendor/css")
     @Styles.Render("~/Bundles/App/Main/css")
+    <link rel="stylesheet" href="https://rawgit.com/darylrowland/angucomplete/master/angucomplete.css" />
 
     <script type="text/javascript">
         //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
@@ -32,6 +33,7 @@
         <script src="@Url.Content("~/Scripts/others/respond.min.js")"></script>
     <![endif]-->
     @Scripts.Render("~/Bundles/App/vendor/js")
+    <script src="https://rawgit.com/darylrowland/angucomplete/master/angucomplete.js"></script>
 
     <script>
         //Localizing momentjs

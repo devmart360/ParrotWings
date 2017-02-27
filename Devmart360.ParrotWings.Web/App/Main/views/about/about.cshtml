@@ -1,63 +1,80 @@
 ﻿<div ng-controller="app.views.about as vm">
     <div class="row">
         <div class="col-md-12">
-            <h3>About This Template</h3>
-
-            <p>
-                This is a simple startup template based on ASP.NET Boilerplate framework and module-zero.
-                If you need an enterprise startup template, check <a href="http://aspnetzero.com?ref=abptmpl" target="_blank">ASP.NET ZERO</a>.
-            </p>
-
-            <h3 id="DocIntro">What is Module Zero?</h3>
-
-            <p>
-                ASP.NET Boilerplate framework is designed to be independent of any database
-                schema and to be as generic as possible. Therefore, It leaves some concepts
-                <strong>abstract</strong> and <strong>optional</strong> (like audit logging, session management and authorization)
-                which requires some <strong>data store</strong>.
-            </p>
-            <p>
-                <strong>Module Zero </strong>implements all fundamental concepts of ASP.NET
-                Boilerplate framework such as <a href="http://www.aspnetboilerplate.com/Pages/Documents/Zero/Tenant-Management">tenant management</a> (<strong>multi-tenancy</strong>),
-                <a href="http://www.aspnetboilerplate.com/Pages/Documents/Zero/Role-Management">
-                    role management
-                </a>, <a href="http://www.aspnetboilerplate.com/Pages/Documents/Zero/User-Management">user management</a>, <a href="http://www.aspnetboilerplate.com/Pages/Documents/Abp-Session">session</a>,
-                <a href="http://www.aspnetboilerplate.com/Pages/Documents/Authorization">authorization</a> (<a href="http://www.aspnetboilerplate.com/Pages/Documents/Zero/Permission-Management">
-                    permission management
-                </a>),
-                <a href="http://www.aspnetboilerplate.com/Pages/Documents/Setting-Management">setting management</a>, <a href="http://www.aspnetboilerplate.com/Pages/Documents/Zero/Language-Management">
-                    language management
-                </a>, <a href="http://www.aspnetboilerplate.com/Pages/Documents/Audit-Logging">audit logging</a>
-                and so on.
-            </p>
-            <p>
-                Module-Zero defines entities and implements <strong>domain logic</strong>
-                (domain layer) and leaves application and presentation layers to the
-                application.
-            </p>
-
-            <h4>Based on Microsoft ASP.NET Identity Framework</h4>
-
-            <p>
-                Module Zero is based on Microsoft's
-                <a href="http://www.asp.net/identity" target="_blank">ASP.NET Identity Framework</a>.
-                It extends user and role managers and implements user and role stores using generic repositories.
-                It supports any ORM that can be used with ASP.NET Boilerplate
-                (like Entity Framework and NHibernate). While module zero extends Identity Framework, it has many unique features.
-            </p>
-
-            <h3>Documentation</h3>
-
-            <p>See <a href="http://www.aspnetboilerplate.com/Pages/Documents">documentation</a> for ASP.NET Boilerplate framework and module-zero.</p>
-
-            <h3>Source code</h3>
-
-            <p>
-                Module-Zero source code is seperated from ASP.NET Boilerplate and hosted on
-                <a href="https://github.com/aspnetboilerplate/module-zero" target="_blank">https://github.com/aspnetboilerplate/module-zero</a>.
-                It's distributed on <a href="http://www.aspnetboilerplate.com/Pages/Documents/Zero/Nuget-Packages">nuget</a> as
-                the framework.
-            </p>
+            <h1>PW Application Overview</h1>
+            <p>The application is for Parrot Wings (PW, &ldquo;internal money&rdquo;) transfer between system users.</p>
+            <p>The application will be very &ldquo;polite&rdquo; and will inform a user of any problems (i.e. login not successful, not enough PW to remit the transaction, etc.)</p>
+            <h2>User registration</h2>
+            <p>Any person on Earth can register with the service for free, providing their Name (e.g. John Smith), valid email (e.g. <a href="mailto:jsmith@gmail.com">jsmith@gmail.com</a>) and password.</p>
+            <p>When a new user registers, the System will verify, that the user has provided a unique (not previously registered in the system) email, and also provided human name and a password. These 3 fields are mandatory. Password is to be typed twice for justification. No email verification required.</p>
+            <p>On successful registration every User will be awarded with 500 (five hundred) PW starting balance.</p>
+            <h2>Logging in</h2>
+            <p>Users login to the system using their email and password.</p>
+            <p>Users will be able to Log out.</p>
+            <p>No password recovery, change password, etc. functions required.</p>
+            <h2>PW</h2>
+            <p>The system will allow users to perform the following operations:</p>
+            <ul>
+                <li>See their Name and current PW balance always on screen</li>
+                <li>
+                    Create a new transaction. To make a new transaction (PW payment) a user will
+                    <ol>
+                        <li>Choose the recipient by querying the User list by name (autocomplete).</li>
+                        <li>When a recipient chosen, entering the PW transaction amount. The system will check that the transaction amount is not greater than the current user balance.</li>
+                        <li>Committing the transaction. Once transaction succeeded, the recipient account will be credited (PW++) by the entered amount of PW, and the payee account debited (PW--) for the same amount of PW. The system shall display PW balance changes immediately to the user.</li>
+                    </ol>
+                </li>
+                <li>(Optional) Create a new transaction as a copy from a list of their existing transactions: create a handy UI for a user to browse their recent transactions, and select a transaction as a basis for a new transaction. Once old transaction selected, all its details (recipient, PW amount) will be copied to the new transaction.</li>
+                <li>
+                    Review a list (history) of their transactions. A list of transactions will show the most recent transactions on top of the list and display the following info for each transaction:
+                    <ol>
+                        <li>Date/Time of the transaction</li>
+                        <li>Correspondent Name</li>
+                        <li>Transaction amount, (Debit/Credit for PW transferred)</li>
+                        <li>Resulting balance</li>
+                    </ol>
+                </li>
+            </ul>
+            <p>(Optional) Implement filtering and/or sorting of transaction list by date, correspondent name and amount.</p>
+            <h1>Architecture requirements</h1>
+            <ul>
+                <li>WEB API application, server-side.</li>
+            </ul>
+            <p>WEB API must implement RESTful service.</p>
+            <ul>
+                <li>HTML front end application</li>
+                <li>Mobile application</li>
+            </ul>
+            <p>HTML frontend and mobile application will implement full application functionality, and communicate with WEB API using JSON.</p>
+            <h1>Technical requirements</h1>
+            <p>Use the following software:</p>
+            <ul>
+                <li>
+                    Server side
+                    <ol>
+                        <li>MS SQL Server 2012 or higher</li>
+                        <li>IIS</li>
+                        <li>Web API</li>
+                        <li>Entity framework 6</li>
+                    </ol>
+                </li>
+                <li>
+                    WEB HTML client
+                    <ol>
+                        <li>HTML5</li>
+                        <li>Javascript or TypeScript</li>
+                        <li>AngularJS or ReactJS</li>
+                        <li>(optional) primeNG, material, bootstrap</li>
+                    </ol>
+                </li>
+                <li>
+                    Mobile application
+                    <ol>
+                        <li>iOs or Android (at your choice, or both platforms)</li>
+                        <li>C# with Xamarin development environment</li>
+                    </ol>
+                </li>
+            </ul>
 
         </div>
 

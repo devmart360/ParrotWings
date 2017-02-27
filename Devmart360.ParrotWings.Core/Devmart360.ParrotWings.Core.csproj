@@ -94,6 +94,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandlers\StartBalanceHandler.cs" />
+    <Compile Include="EventModels\UserCreatedEventData.cs" />
+    <Compile Include="IRepositories\ITransactionRepository.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Notifications\BalanceChangedNotificationData.cs" />
     <Compile Include="ParrotWingsConsts.cs" />
     <Compile Include="ParrotWingsCoreModule.cs" />
     <Compile Include="Authorization\ParrotWingsAuthorizationProvider.cs" />
@@ -144,6 +149,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Localization\Source\ParrotWings-nl-NL.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

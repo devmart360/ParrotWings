@@ -28,7 +28,11 @@
             };
 
             abp.event.on('abp.notifications.received', function (userNotification) {
-                abp.notifications.showUiNotifyForUserNotification(userNotification);
+                //abp.notifications.showUiNotifyForUserNotification(userNotification);
+
+                if (userNotification.notification.notificationName === 'BalanceChanged') {
+                    abp.notify.info("Баланс изменился: " + userNotification.notification.data.balance);
+                }
             });
         }
     ]);

@@ -2,8 +2,11 @@
     'use strict';
     
     var app = angular.module('app', [
+        'ngRoute',
         'ngAnimate',
         'ngSanitize',
+
+        'ngMaterial',
 
         'ui.router',
         'ui.bootstrap',
@@ -48,7 +51,26 @@
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',
                     menu: 'About' //Matches to name of 'About' menu in ParrotWingsNavigationProvider
-                });
+                })
+                .state('transactions', {
+                    url: '/transactions',
+                    templateUrl: '/App/Main/views/transactions/transactions.cshtml',
+                    menu: 'Transactions' //Matches to name of 'Transactions' menu in ParrotWingsNavigationProvider
+                })
+                .state('newTrans', {
+                     url: '/transactions/new', 
+                     templateUrl: '/App/Main/views/transactions/transaction.form.cshtml',
+                     menu: 'Transactions'
+                 })
+            ;
         }
     ]);
+
+
+    app.controller('newTransactionController', [
+       '$scope', '$state', '$stateParams', 'abp.services.app.transaction',
+       function ($scope, $state, $stateParams, transactionService) {
+           console.log('newTransactionController start');
+       }]);
+
 })();

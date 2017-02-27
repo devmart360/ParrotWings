@@ -22,12 +22,12 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
+                @*<li class="dropdown">
                     <a href="" data-toggle="dropdown"><i ng-class="vm.currentLanguage.icon"></i> <span>{{vm.currentLanguage.displayName}}</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li ng-repeat="language in vm.languages" ng-hide="vm.currentLanguage.name == language.name"><a href="@(ApplicationPath)AbpLocalization/ChangeCulture?cultureName={{language.name}}"><i ng-class="language.icon"></i> {{language.displayName}}</a></li>
                     </ul>
-                </li>
+                </li>*@
                 <li class="dropdown">
                     <a href="" data-toggle="dropdown"><i class="fa fa-user"></i> <span>{{vm.getShownUserName()}}</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">

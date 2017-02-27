@@ -1,0 +1,16 @@
+﻿<div ng-controller="app.views.transactions as vm">
+    Текущий баланс: {{vm.balance}}
+
+    <hr />
+    <a href="#/transactions/new">Создать новый перевод</a>
+
+    <hr />
+    <button class="btn btn-primary" ng-click="vm.getBalance()">Проверить баланс</button>
+
+    <hr />
+    История:
+
+    <ul ng-repeat="t in vm.transactions">
+        <li>CreatorUserName: <b>{{t.creatorUserName}}</b> | RecipientUserName: <b>{{t.recipientUserName}}</b> | Amount: <b>{{t.amount}}</b></li>
+    </ul>
+</div>

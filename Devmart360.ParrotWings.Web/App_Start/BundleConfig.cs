@@ -19,6 +19,7 @@ namespace Devmart360.ParrotWings.Web
                     .Include("~/Scripts/sweetalert/sweet-alert.css", new CssRewriteUrlTransform())
                     .Include("~/Content/flags/famfamfam-flags.css", new CssRewriteUrlTransform())
                     .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/angular-material.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/App/vendor/js
@@ -44,12 +45,17 @@ namespace Devmart360.ParrotWings.Web
                         "~/Scripts/others/spinjs/jquery.spin.js",
 
                         "~/Scripts/angular.min.js",
+                        "~/Scripts/angular-route.js",
                         "~/Scripts/angular-animate.min.js",
                         "~/Scripts/angular-sanitize.min.js",
                         "~/Scripts/angular-ui-router.min.js",
                         "~/Scripts/angular-ui/ui-bootstrap.min.js",
                         "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
                         "~/Scripts/angular-ui/ui-utils.min.js",
+                        
+                        "~/Scripts/angular-aria/angular-aria.js",
+                        "~/Scripts/angular-messages.js",
+                        "~/Scripts/angular-material/angular-material.js",
 
                         "~/Abp/Framework/scripts/abp.js",
                         "~/Abp/Framework/scripts/libs/abp.jquery.js",

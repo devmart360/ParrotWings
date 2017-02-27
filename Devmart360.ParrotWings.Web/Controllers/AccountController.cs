@@ -16,6 +16,7 @@ using Abp.UI;
 using Abp.Web.Models;
 using Devmart360.ParrotWings.Authorization;
 using Devmart360.ParrotWings.Authorization.Roles;
+using Devmart360.ParrotWings.EventModels;
 using Devmart360.ParrotWings.MultiTenancy;
 using Devmart360.ParrotWings.Users;
 using Devmart360.ParrotWings.Web.Controllers.Results;
@@ -255,10 +256,17 @@ namespace Devmart360.ParrotWings.Web.Controllers
                 {
                     user.Roles.Add(new UserRole { RoleId = defaultRole.Id });
                 }
-
+                
                 //Save user
                 CheckErrors(await _userManager.CreateAsync(user));
                 await _unitOfWorkManager.Current.SaveChangesAsync();
+
+                // todo: надо добавлять новые разрешения в AuthorizationProvider
+                //// по умолчанию всегда добавляется разрешение Users
+                //var p = new Abp.Authorization.Permission("Users");
+                //await _userManager.GrantPermissionAsync(user, p);
+                // добавление начального баланса
+                EventBus.Trigger(new UserCreatedEventData { UserId = user.Id });
 
                 //Directly login if possible
                 if (user.IsActive)

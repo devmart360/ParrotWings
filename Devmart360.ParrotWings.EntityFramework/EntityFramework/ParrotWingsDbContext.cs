@@ -1,6 +1,8 @@
 ﻿using System.Data.Common;
+using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using Devmart360.ParrotWings.Authorization.Roles;
+using Devmart360.ParrotWings.Models;
 using Devmart360.ParrotWings.MultiTenancy;
 using Devmart360.ParrotWings.Users;
 
@@ -9,6 +11,8 @@ namespace Devmart360.ParrotWings.EntityFramework
     public class ParrotWingsDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+
+        public DbSet<Transaction> Transactions { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

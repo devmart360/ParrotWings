@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -14,5 +15,9 @@ namespace Devmart360.ParrotWings.Users
         Task<ListResultDto<UserListDto>> GetUsers();
 
         Task CreateUser(CreateUserInput input);
+
+        // ---
+
+        ListResultDto<UserListDto> Find(UserFilterInputDto termUserFilterInputDto);
     }
 }

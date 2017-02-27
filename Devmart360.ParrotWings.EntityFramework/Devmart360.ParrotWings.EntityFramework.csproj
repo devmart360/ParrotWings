@@ -120,9 +120,18 @@
   <ItemGroup>
     <Compile Include="EntityFramework\ParrotWingsDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\ParrotWingsRepositoryBase.cs" />
+    <Compile Include="EntityFramework\Repositories\TransactionRepository.cs" />
     <Compile Include="Migrations\201701271145151_AbpZero_Initial.cs" />
     <Compile Include="Migrations\201701271145151_AbpZero_Initial.Designer.cs">
       <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702212235485_Update1.cs" />
+    <Compile Include="Migrations\201702212235485_Update1.Designer.cs">
+      <DependentUpon>201702212235485_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702251700169_Update2.cs" />
+    <Compile Include="Migrations\201702251700169_Update2.Designer.cs">
+      <DependentUpon>201702251700169_Update2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -149,6 +158,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701271145151_AbpZero_Initial.resx">
       <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702212235485_Update1.resx">
+      <DependentUpon>201702212235485_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702251700169_Update2.resx">
+      <DependentUpon>201702251700169_Update2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

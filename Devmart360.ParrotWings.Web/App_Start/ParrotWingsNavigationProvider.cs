@@ -45,6 +45,13 @@ namespace Devmart360.ParrotWings.Web
                         url: "#/about",
                         icon: "fa fa-info"
                         )
+                 ).AddItem(
+                    new MenuItemDefinition(
+                        "Transactions",
+                        new LocalizableString("Transactions", ParrotWingsConsts.LocalizationSourceName),
+                        url: "#/transactions",
+                        icon: "fa fa-money"
+                        )
                 );
         }
 
